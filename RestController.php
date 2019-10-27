@@ -1,4 +1,14 @@
 <?php
+
+/* Test d'un webservice d'extraction des blocs de compétences à partir des fiches RNCP du site https://certificationprofessionnelle.fr/
+
+	Usage : url/rncp/blocs/{n°fiche rcnp}
+
+	Téléchargement sur https://github.com/eduquenoy/extract_rncp
+
+	D'après https://phppot.com/php/php-restful-web-service/ 
+	*/
+
 require_once("BlockRestHandler.php");
 		
 //echo "Hello<br>";
