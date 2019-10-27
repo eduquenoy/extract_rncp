@@ -35,7 +35,7 @@ Class Block {
 		preg_match_all('#RNCP'.$rncp.'BC(.*)<\/td>[[:cntrl:]](.*)<p(.*)>(.*)<\/p>#',$page,$contenu);
 		$blocs = array();
 		for($i=0;$i<8;$i++){
-			$blocs[html_entity_decode($titre[1][$i])] = ltrim(html_entity_decode($contenu[4][$i]),"•");
+			$blocs[rtrim(html_entity_decode($titre[1][$i]))] = rtrim(ltrim(html_entity_decode($contenu[4][$i]),"•"));
 		//echo "Titre : ".$blocs[0][$i]." Contenu : ".$blocs[1][$i]."<br>";
 		}
 	return($blocs);
