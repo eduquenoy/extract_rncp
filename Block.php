@@ -4,15 +4,6 @@ A domain Class to demonstrate RESTful web services
 */
 Class Block {
 	
-	private $blocs = array(
-		1 => 'Apple iPhone 6S',  
-		2 => 'Samsung Galaxy S6',  
-		3 => 'Apple iPhone 6S Plus',  			
-		4 => 'LG G4',  			
-		5 => 'Samsung Galaxy S6 edge',  
-		6 => 'OnePlus 2',
-		7 => '',
-		8 => '');
 		
 	/*
 		you should hookup the DAO here
@@ -42,19 +33,11 @@ Class Block {
 		//$numero_rncp="24533";
 		preg_match_all("#RNCP".$rncp."BC\d\d<br\/><br\/>(.*)<\/td>#",$page,$titre);
 		preg_match_all('#RNCP'.$rncp.'BC(.*)<\/td>[[:cntrl:]](.*)<p(.*)>(.*)<\/p>#',$page,$contenu);
-	//$reponse= "<table><tr><td>Titre</td><td>Description</td></tr>";
-	//$reponse = $reponse. "<tr>";
 		$blocs = array();
 		for($i=0;$i<8;$i++){
-		//$reponse= $reponse."<td>".$titre[1][$i]."</td>";
-		//$reponse= $reponse."<td>".$contenu[4][$i]."</td></tr>";
-			/*$blocs[0][$i] = $titre[1][$i];
-			$blocs[1][$i] = $contenu[4][$i];*/
-			//$blocs[$titre[1][$i]] = $contenu[4][$i];
 			$blocs[html_entity_decode($titre[1][$i])] = ltrim(html_entity_decode($contenu[4][$i]),"•");
 		//echo "Titre : ".$blocs[0][$i]." Contenu : ".$blocs[1][$i]."<br>";
 		}
-//var_dump($blocs);
 	return($blocs);
 }
 

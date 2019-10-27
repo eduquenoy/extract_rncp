@@ -47,13 +47,13 @@ class BlockRestHandler extends SimpleRest {
 	}
 	
 	public function encodeXml($responseData) {
-		// creating object of SimpleXMLElement
-		$xml = new SimpleXMLElement('<?xml version="1.0"?><bloc></bloc>');
+		// creating object of SimpleXMLElement 
+		$xml = new SimpleXMLElement('<?xml version="1.0"?><block></block>');
 		$i = 0;
 		foreach($responseData as $key=>$value) {
 			$numero = $xml->addChild($i++);
-			$numero->addChild("Titre",$key);
-			$numero->addChild("Description", $value);
+			$numero->addChild("title",$key);
+			$numero->addChild("description", $value);
 		}
 		return $xml->asXML();
 	}
