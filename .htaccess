@@ -1,0 +1,10 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+# deux cas : une liste complète de blocs de compétences ou bien un bloc seul (de 1 à 8)
+# renvoyer l'ensemble des blocs pour une fiche RNCP
+RewriteRule ^blocs/([0-9]*)/?$   /extraire/rest/RestController.php?view=all&rncp=$1
+# renvoyer un bloc pour une fiche RNCP donnée
+RewriteRule ^blocs/([0-9]*)/([0-9]*)/?$   /extraire/rest/RestController.php?view=single&rncp=$1&bloc=$2
