@@ -33,12 +33,13 @@ Class Block {
 		//$numero_rncp="24533";
 		preg_match_all("#RNCP".$rncp."BC\d\d<br\/><br\/>(.*)<\/td>#",$page,$titre);
 		preg_match_all('#RNCP'.$rncp.'BC(.*)<\/td>[[:cntrl:]](.*)<p(.*)>(.*)<\/p>#',$page,$contenu);
-		$blocs = array();
+		$blocks = array();
 		for($i=0;$i<8;$i++){
-			$blocs[rtrim(html_entity_decode($titre[1][$i]))] = rtrim(ltrim(html_entity_decode($contenu[4][$i]),"•"));
+			$blocks[rtrim(html_entity_decode($titre[1][$i]))] = rtrim(ltrim(html_entity_decode($contenu[4][$i]),"•"));
 		//echo "Titre : ".$blocs[0][$i]." Contenu : ".$blocs[1][$i]."<br>";
 		}
-	return($blocs);
+		//print_r($blocks);
+	return($blocks);
 }
 
 
@@ -46,10 +47,13 @@ Class Block {
 		return $this->blocs;
 	}
 */	
-	public function getBlock($id){
+	public function getBlock($rncp,$id){
 		
-		$bloc = array($id => ($this->blocks[$id]) ? $this->blocks[$id] : $this->blocks[1]);
-		return $mobile;
+		$blocks = $this->getAllBlocks($rncp);
+		$titles = array_keys($blocks);
+		$descriptions = array_values($blocks);
+		$block[$titles[$id]] = $descriptions[$id];
+		return $block;
 	}	
 }
 ?>

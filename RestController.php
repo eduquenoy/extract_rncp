@@ -2,7 +2,7 @@
 
 /* Test d'un webservice d'extraction des blocs de compétences à partir des fiches RNCP du site https://certificationprofessionnelle.fr/
 
-	Usage : url/rncp/blocs/{n°fiche rcnp}
+	Usage : {url}/rncp/blocs/{n°fiche rcnp}
 
 	Téléchargement sur https://github.com/eduquenoy/extract_rncp
 
@@ -34,8 +34,12 @@ switch($view){
 		// to handle REST Url /mobile/show/<id>/
 		//$mobileRestHandler = new MobileRestHandler();
 		//$mobileRestHandler->getMobile($_GET["id"]);
-		echo "Fiche RNCP  : ".$_GET["rncp"]."<br>";
-		echo "Bloc n°  : ".$_GET["bloc"]."<br>";
+		$rncp = $_GET["rncp"];
+		$block = $_GET["bloc"];
+//		echo "Fiche RNCP  : ".$_GET["rncp"]."<br>";
+//		echo "Bloc n°  : ".$_GET["bloc"]."<br>";
+		$blockRestHandler = new BlockRestHandler();
+		$blockRestHandler->getBlock($rncp,$block);
 		break;
 
 	case "" :

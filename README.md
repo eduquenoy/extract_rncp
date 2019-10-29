@@ -1,9 +1,11 @@
 # extract_blocks
  Webservice d'extraction de blocs de compétences à partir de fiches RNCP
 
-__Syntaxe :__ 
+__Syntaxes :__ 
 ```
-{url}/rncp/blocks/{n° de fiche RNCP}
+{url}/rncp/blocs/{n° de fiche RNCP}
+{url}/rncp/blocs/{n° de fiche RNCP}/{n° du bloc de compétences}
+
 ```
 
 * Accès aux fiches RNCP : https://certificationprofessionnelle.fr/ 

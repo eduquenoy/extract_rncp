@@ -58,10 +58,10 @@ class BlockRestHandler extends SimpleRest {
 		return $xml->asXML();
 	}
 	
-	public function getBlock($id) {
+	public function getBlock($rncp, $id) {
 
 		$block = new Block();
-		$rawData = $block->getBlock($id);
+		$rawData = $block->getBlock($rncp,$id);
 
 		if(empty($rawData)) {
 			$statusCode = 404;
