@@ -11,6 +11,7 @@ Class Block {
 	public function getAllBlocks($rncp){
 		$url="https://certificationprofessionnelle.fr/recherche/rncp/".$rncp."#ancre3";
 		//echo "URL : ".$url."<br>";
+		echo "Résultat : <br>";
 		$timeout = 10;
 		$ch = curl_init($url);
 
@@ -32,13 +33,15 @@ Class Block {
 		curl_close($ch);
 		//$numero_rncp="24533";
 		preg_match_all("#RNCP".$rncp."BC\d\d<br\/><br\/>(.*)<\/td>#",$page,$titre);
+		//print_r($titre);
 		preg_match_all('#RNCP'.$rncp.'BC(.*)<\/td>[[:cntrl:]](.*)<p(.*)>(.*)<\/p>#',$page,$contenu);
+		//print_r($contenu[]);
 		$blocks = array();
 		for($i=0;$i<8;$i++){
 			$blocks[rtrim(html_entity_decode($titre[1][$i]))] = rtrim(ltrim(html_entity_decode($contenu[4][$i]),"•"));
 		//echo "Titre : ".$blocs[0][$i]." Contenu : ".$blocs[1][$i]."<br>";
 		}
-		//print_r($blocks);
+		print_r($blocks);
 	return($blocks);
 }
 
